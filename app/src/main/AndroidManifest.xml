@@ -12,25 +12,25 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Game">
         <activity
-            android:name=".MainActivity8"
+            android:name=".MenuActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity7"
+            android:name=".LevelVeryHardActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity6"
+            android:name=".LevelHardActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity5"
+            android:name=".LevelNormalActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity4"
+            android:name=".LevelEasyActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity3"
+            android:name=".LevelVeryEasyActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity2"
+            android:name=".DifficultySelectionActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

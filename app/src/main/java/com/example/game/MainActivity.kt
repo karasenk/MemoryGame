@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun startNewActivity(view: View) {
-        startActivity(Intent(this, MainActivity2::class.java))
+        startActivity(Intent(this, DifficultySelectionActivity::class.java))
     }
 
 }
