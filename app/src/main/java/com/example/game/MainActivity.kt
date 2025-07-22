@@ -5,8 +5,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import android.content.Intent
-import android.view.View
+import androidx.navigation.fragment.NavHostFragment
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,10 +17,10 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        initNavigation()
     }
-
-    fun startNewActivity(view: View) {
-        startActivity(Intent(this, MainActivity2::class.java))
+    private fun initNavigation(){
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.main_fragment_container) as? NavHostFragment
+        val navController = navHostFragment?.navController
     }
-
 }

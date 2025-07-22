@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity2">
+    tools:context=".LevelChoiceFragment">
 
     <pl.droidsonroids.gif.GifImageView
         android:id="@+id/gifImageView"
@@ -17,15 +17,15 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/difficultyIv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/difficulty_icon_two"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/difficulty_icon_two" />
 
     <ImageButton
-        android:id="@+id/myButton"
+        android:id="@+id/veryEasyLevelBtn"
         android:layout_width="205dp"
         android:layout_height="66dp"
         android:layout_marginBottom="476dp"
@@ -41,7 +41,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton
-        android:id="@+id/myButton"
+        android:id="@+id/easyBtn"
         android:layout_width="205dp"
         android:layout_height="66dp"
         android:layout_marginBottom="396dp"
@@ -57,7 +57,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton
-        android:id="@+id/myButton"
+        android:id="@+id/normalLevelBtn"
         android:layout_width="205dp"
         android:layout_height="66dp"
         android:layout_marginBottom="316dp"
@@ -73,7 +73,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton
-        android:id="@+id/myButton"
+        android:id="@+id/hardLevelBtn"
         android:layout_width="205dp"
         android:layout_height="66dp"
         android:layout_marginBottom="236dp"
@@ -89,7 +89,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton
-        android:id="@+id/myButton"
+        android:id="@+id/veryHardLevelBtn"
         android:layout_width="205dp"
         android:layout_height="66dp"
         android:layout_marginBottom="156dp"
