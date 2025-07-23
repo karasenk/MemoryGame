@@ -8,20 +8,23 @@
     android:layout_height="match_parent"
     tools:context=".LevelVeryEasyActivity">
 
-    <pl.droidsonroids.gif.GifImageView
-        android:id="@+id/gifImageView"
-        android:layout_width="1053dp"
-        android:layout_height="827dp"
-        android:src="@drawable/backgroundnew"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <!-- Кнопка паузы -->
 
     <!-- Кнопка выхода -->
 
     <!-- Кнопка меню -->
+
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/gifImageView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/backgroundnew"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
 
     <ImageButton
         android:id="@+id/btn_pause"

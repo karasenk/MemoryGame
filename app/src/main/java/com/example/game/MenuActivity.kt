@@ -24,4 +24,8 @@ class MenuActivity : AppCompatActivity() {
     fun menu(view: View) {
         startActivity(Intent(this, MainActivity::class.java))
     }
+
+    fun exitApp(view: View) {
+        finishAffinity()
+    }
 }

@@ -51,6 +51,10 @@ class LevelVeryHardActivity : AppCompatActivity() {
     private val PREFS_NAME = "GamePrefs"
     private val BEST_SCORE_KEY = "best_score_very_hard"
 
+    private var isTimerRunning = false
+
+    private var pauseOffset: Long = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_level_very_hard)
@@ -131,17 +135,19 @@ class LevelVeryHardActivity : AppCompatActivity() {
     }
 
     private fun startTimer() {
-        startTime = SystemClock.elapsedRealtime()
+        startTime = SystemClock.elapsedRealtime() - pauseOffset
         timerHandler.postDelayed(timerRunnable, 1000)
+        isTimerRunning = true
     }
 
     private fun stopTimer() {
         timerHandler.removeCallbacks(timerRunnable)
         elapsedTime = SystemClock.elapsedRealtime() - startTime
+        isTimerRunning = false
     }
-
     private fun gameCompleted() {
         stopTimer()
+        pauseOffset = 0
 
         val bestScore = prefs.getInt(BEST_SCORE_KEY, Int.MAX_VALUE)
         val isNewRecord = movesCount < bestScore
@@ -172,19 +178,28 @@ class LevelVeryHardActivity : AppCompatActivity() {
 
     fun pause(view: View) {
         val pauseOverlay = findViewById<ImageView>(R.id.pauseOverlay)
-        val isPaused = pauseOverlay.visibility != View.VISIBLE
+        val isCurrentlyPaused = pauseOverlay.visibility == View.VISIBLE
 
-        // Блокируем/разблокируем карточки
-        listOf(
-            R.id.card_1, R.id.card_2, R.id.card_3, R.id.card_4,
-            R.id.card_5, R.id.card_6, R.id.card_7, R.id.card_8,
-            R.id.card_9, R.id.card_10, R.id.card_11, R.id.card_12,
-            R.id.card_13, R.id.card_14, R.id.card_15, R.id.card_16
-        ).forEach { id ->
-            findViewById<ImageButton>(id).isClickable = !isPaused
+        if (isCurrentlyPaused) {
+            startTime = SystemClock.elapsedRealtime() - pauseOffset
+            startTimer()
+
+            if (matchedPairs < TOTAL_PAIRS) {
+                listOf(R.id.card_1, R.id.card_2, R.id.card_3, R.id.card_4).forEach { id ->
+                    findViewById<ImageButton>(id).isClickable = true
+                }
+            }
+
+            pauseOverlay.visibility = View.GONE
+        } else {
+            stopTimer()
+            pauseOffset = elapsedTime
+
+            listOf(R.id.card_1, R.id.card_2, R.id.card_3, R.id.card_4).forEach { id ->
+                findViewById<ImageButton>(id).isClickable = false
+            }
+
+            pauseOverlay.visibility = View.VISIBLE
         }
-
-        // Показываем/скрываем overlay паузы
-        pauseOverlay.visibility = if (isPaused) View.VISIBLE else View.GONE
     }
 }
