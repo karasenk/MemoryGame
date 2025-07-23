@@ -15,6 +15,9 @@
             android:name=".MenuActivity"
             android:exported="false" />
         <activity
+            android:name=".LevelResultActivity"
+            android:exported="false" />
+        <activity
             android:name=".LevelVeryHardActivity"
             android:exported="false" />
         <activity

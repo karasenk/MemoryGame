@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LevelEasyActivity">
+    tools:context=".LevelVeryHardActivity">
 
     <pl.droidsonroids.gif.GifImageView
         android:id="@+id/gifImageView"
@@ -17,59 +18,43 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/myImage"
+        android:id="@+id/pauseOverlay"
         android:layout_width="363dp"
         android:layout_height="707dp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/gifImageView"
-        android:visibility="gone"
         app:srcCompat="@drawable/pause_picture" />
 
+    <!-- Кнопка паузы -->
+
+    <!-- Кнопка выхода -->
+
+    <!-- Кнопка меню -->
+
     <ImageButton
-        android:id="@+id/myButton"
+        android:id="@+id/btn_pause"
         android:layout_width="167dp"
         android:layout_height="58dp"
-        android:layout_marginBottom="36dp"
+        android:layout_marginBottom="56dp"
         android:background="@drawable/start_button_menu"
-        android:clipToOutline="true"
-        android:contentDescription="Rounded button"
+        android:contentDescription="Pause button"
         android:onClick="pause"
-        android:outlineProvider="background"
         android:scaleType="centerCrop"
         android:src="@drawable/pause_button_game"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.11"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton
-        android:id="@+id/myButton"
-        android:layout_width="167dp"
-        android:layout_height="58dp"
-        android:layout_marginBottom="36dp"
-        android:background="@drawable/start_button_menu"
-        android:clipToOutline="true"
-        android:contentDescription="Rounded button"
-        android:onClick="end"
-        android:outlineProvider="background"
-        android:scaleType="centerCrop"
-        android:src="@drawable/end_button_game"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.913"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <ImageButton
-        android:id="@+id/myButton"
+        android:id="@+id/btn_menu"
         android:layout_width="122dp"
         android:layout_height="42dp"
         android:background="@drawable/start_button_menu"
-        android:clipToOutline="true"
-        android:contentDescription="Rounded button"
+        android:contentDescription="Menu button"
         android:onClick="menu"
-        android:outlineProvider="background"
         android:scaleType="centerCrop"
         android:src="@drawable/menu_button_game"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -79,36 +64,31 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.023" />
 
+    <!-- Игровые карточки (16 штук для уровня Very Hard) -->
     <ImageButton
-        android:id="@+id/myButton"
+        android:id="@+id/card_1"
         android:layout_width="85dp"
         android:layout_height="85dp"
         android:background="@drawable/start_button_menu"
-        android:clipToOutline="true"
-        android:contentDescription="Rounded button"
-        android:onClick="menu"
-        android:outlineProvider="background"
-        android:scaleType="centerCrop"
+        android:contentDescription="Card 1"
         android:src="@drawable/secret_button_game"
         app:layout_constraintBottom_toBottomOf="parent"
+        android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.647"
+        app:layout_constraintHorizontal_bias="0.082"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.513" />
+        app:layout_constraintVertical_bias="0.224" />
 
     <ImageButton
-        android:id="@+id/myButton"
+        android:id="@+id/card_2"
         android:layout_width="85dp"
         android:layout_height="85dp"
         android:background="@drawable/start_button_menu"
-        android:clipToOutline="true"
-        android:contentDescription="Rounded button"
-        android:onClick="menu"
-        android:outlineProvider="background"
-        android:scaleType="centerCrop"
+        android:contentDescription="Card 2"
         android:src="@drawable/secret_button_game"
         app:layout_constraintBottom_toBottomOf="parent"
+        android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.365"
         app:layout_constraintStart_toStartOf="parent"
@@ -116,17 +96,14 @@
         app:layout_constraintVertical_bias="0.224" />
 
     <ImageButton
-        android:id="@+id/myButton"
+        android:id="@+id/card_3"
         android:layout_width="85dp"
         android:layout_height="85dp"
         android:background="@drawable/start_button_menu"
-        android:clipToOutline="true"
-        android:contentDescription="Rounded button"
-        android:onClick="menu"
-        android:outlineProvider="background"
-        android:scaleType="centerCrop"
+        android:contentDescription="Card 3"
         android:src="@drawable/secret_button_game"
         app:layout_constraintBottom_toBottomOf="parent"
+        android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.647"
         app:layout_constraintStart_toStartOf="parent"
@@ -134,14 +111,71 @@
         app:layout_constraintVertical_bias="0.224" />
 
     <ImageButton
-        android:id="@+id/myButton"
+        android:id="@+id/card_4"
         android:layout_width="85dp"
         android:layout_height="85dp"
         android:background="@drawable/start_button_menu"
-        android:clipToOutline="true"
-        android:contentDescription="Rounded button"
-        android:onClick="menu"
-        android:outlineProvider="background"
+        android:contentDescription="Card 4"
+        android:src="@drawable/secret_button_game"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.935"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.224" />
+
+    <ImageButton
+        android:id="@+id/card_5"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:background="@drawable/start_button_menu"
+        android:contentDescription="Card 5"
+        android:src="@drawable/secret_button_game"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.082"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.368" />
+
+    <ImageButton
+        android:id="@+id/card_6"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:background="@drawable/start_button_menu"
+        android:contentDescription="Card 6"
+        android:src="@drawable/secret_button_game"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:scaleType="centerCrop"
+        app:layout_constraintHorizontal_bias="0.365"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.368" />
+
+    <ImageButton
+        android:id="@+id/card_7"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:background="@drawable/start_button_menu"
+        android:contentDescription="Card 7"
+        android:scaleType="centerCrop"
+        android:src="@drawable/secret_button_game"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.647"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.368" />
+
+    <ImageButton
+        android:id="@+id/card_8"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:background="@drawable/start_button_menu"
+        android:contentDescription="Card 8"
         android:scaleType="centerCrop"
         android:src="@drawable/secret_button_game"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -152,71 +186,59 @@
         app:layout_constraintVertical_bias="0.368" />
 
     <ImageButton
-        android:id="@+id/myButton"
+        android:id="@+id/card_9"
         android:layout_width="85dp"
         android:layout_height="85dp"
         android:background="@drawable/start_button_menu"
-        android:clipToOutline="true"
-        android:contentDescription="Rounded button"
-        android:onClick="menu"
-        android:outlineProvider="background"
+        android:contentDescription="Card 9"
         android:scaleType="centerCrop"
         android:src="@drawable/secret_button_game"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.082"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.513" />
+
+    <ImageButton
+        android:id="@+id/card_10"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:background="@drawable/start_button_menu"
+        android:contentDescription="Card 10"
+        android:src="@drawable/secret_button_game"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.365"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.513" />
+
+    <ImageButton
+        android:id="@+id/card_11"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:background="@drawable/start_button_menu"
+        android:contentDescription="Card 11"
+        android:src="@drawable/secret_button_game"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:scaleType="centerCrop"
         app:layout_constraintHorizontal_bias="0.647"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.368" />
+        app:layout_constraintVertical_bias="0.513" />
 
     <ImageButton
-        android:id="@+id/myButton"
+        android:id="@+id/card_12"
         android:layout_width="85dp"
         android:layout_height="85dp"
         android:background="@drawable/start_button_menu"
-        android:clipToOutline="true"
-        android:contentDescription="Rounded button"
-        android:onClick="menu"
-        android:outlineProvider="background"
-        android:scaleType="centerCrop"
+        android:contentDescription="Card 12"
         android:src="@drawable/secret_button_game"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.365"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.368" />
-
-    <ImageButton
-        android:id="@+id/myButton"
-        android:layout_width="85dp"
-        android:layout_height="85dp"
-        android:background="@drawable/start_button_menu"
-        android:clipToOutline="true"
-        android:contentDescription="Rounded button"
-        android:onClick="menu"
-        android:outlineProvider="background"
         android:scaleType="centerCrop"
-        android:src="@drawable/secret_button_game"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.082"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.368" />
-
-    <ImageButton
-        android:id="@+id/myButton"
-        android:layout_width="85dp"
-        android:layout_height="85dp"
-        android:background="@drawable/start_button_menu"
-        android:clipToOutline="true"
-        android:contentDescription="Rounded button"
-        android:onClick="menu"
-        android:outlineProvider="background"
-        android:scaleType="centerCrop"
-        android:src="@drawable/secret_button_game"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.935"
         app:layout_constraintStart_toStartOf="parent"
@@ -224,71 +246,14 @@
         app:layout_constraintVertical_bias="0.513" />
 
     <ImageButton
-        android:id="@+id/myButton"
+        android:id="@+id/card_13"
         android:layout_width="85dp"
         android:layout_height="85dp"
         android:background="@drawable/start_button_menu"
-        android:clipToOutline="true"
-        android:contentDescription="Rounded button"
-        android:onClick="menu"
-        android:outlineProvider="background"
-        android:scaleType="centerCrop"
+        android:contentDescription="Card 13"
         android:src="@drawable/secret_button_game"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.365"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.513" />
-
-    <ImageButton
-        android:id="@+id/myButton"
-        android:layout_width="85dp"
-        android:layout_height="85dp"
-        android:background="@drawable/start_button_menu"
-        android:clipToOutline="true"
-        android:contentDescription="Rounded button"
-        android:onClick="menu"
-        android:outlineProvider="background"
         android:scaleType="centerCrop"
-        android:src="@drawable/secret_button_game"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.082"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.513" />
-
-    <ImageButton
-        android:id="@+id/myButton"
-        android:layout_width="85dp"
-        android:layout_height="85dp"
-        android:background="@drawable/start_button_menu"
-        android:clipToOutline="true"
-        android:contentDescription="Rounded button"
-        android:onClick="menu"
-        android:outlineProvider="background"
-        android:scaleType="centerCrop"
-        android:src="@drawable/secret_button_game"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.935"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.224" />
-
-    <ImageButton
-        android:id="@+id/myButton"
-        android:layout_width="85dp"
-        android:layout_height="85dp"
-        android:background="@drawable/start_button_menu"
-        android:clipToOutline="true"
-        android:contentDescription="Rounded button"
-        android:onClick="menu"
-        android:outlineProvider="background"
-        android:scaleType="centerCrop"
-        android:src="@drawable/secret_button_game"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.082"
         app:layout_constraintStart_toStartOf="parent"
@@ -296,16 +261,13 @@
         app:layout_constraintVertical_bias="0.659" />
 
     <ImageButton
-        android:id="@+id/myButton"
+        android:id="@+id/card_14"
         android:layout_width="85dp"
         android:layout_height="85dp"
         android:background="@drawable/start_button_menu"
-        android:clipToOutline="true"
-        android:contentDescription="Rounded button"
-        android:onClick="menu"
-        android:outlineProvider="background"
-        android:scaleType="centerCrop"
+        android:contentDescription="Card 14"
         android:src="@drawable/secret_button_game"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.365"
@@ -314,34 +276,13 @@
         app:layout_constraintVertical_bias="0.659" />
 
     <ImageButton
-        android:id="@+id/myButton"
+        android:id="@+id/card_15"
         android:layout_width="85dp"
         android:layout_height="85dp"
         android:background="@drawable/start_button_menu"
-        android:clipToOutline="true"
-        android:contentDescription="Rounded button"
-        android:onClick="menu"
-        android:outlineProvider="background"
-        android:scaleType="centerCrop"
+        android:contentDescription="Card 15"
         android:src="@drawable/secret_button_game"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.935"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.659" />
-
-    <ImageButton
-        android:id="@+id/myButton"
-        android:layout_width="85dp"
-        android:layout_height="85dp"
-        android:background="@drawable/start_button_menu"
-        android:clipToOutline="true"
-        android:contentDescription="Rounded button"
-        android:onClick="menu"
-        android:outlineProvider="background"
         android:scaleType="centerCrop"
-        android:src="@drawable/secret_button_game"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.647"
@@ -350,22 +291,18 @@
         app:layout_constraintVertical_bias="0.659" />
 
     <ImageButton
-        android:id="@+id/myButton"
+        android:id="@+id/card_16"
         android:layout_width="85dp"
+        android:scaleType="centerCrop"
         android:layout_height="85dp"
         android:background="@drawable/start_button_menu"
-        android:clipToOutline="true"
-        android:contentDescription="Rounded button"
-        android:onClick="menu"
-        android:outlineProvider="background"
-        android:scaleType="centerCrop"
+        android:contentDescription="Card 16"
         android:src="@drawable/secret_button_game"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.082"
+        app:layout_constraintHorizontal_bias="0.935"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.224" />
-
+        app:layout_constraintVertical_bias="0.659" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
