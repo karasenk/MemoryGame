@@ -44,11 +44,12 @@
     <ImageButton
         android:id="@+id/btn_leave"
         android:layout_width="215dp"
-        android:scaleType="centerCrop"
         android:layout_height="77dp"
         android:layout_marginBottom="100dp"
         android:background="@drawable/start_button_menu"
         android:contentDescription="Leave button"
+        android:onClick="exitApp"
+        android:scaleType="centerCrop"
         android:src="@drawable/leave_button_menu_title"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

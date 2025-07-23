@@ -24,4 +24,7 @@ class MainActivity : AppCompatActivity() {
         startActivity(Intent(this, DifficultySelectionActivity::class.java))
     }
 
+    fun exitApp(view: View) {
+        finishAffinity()
+    }
 }
