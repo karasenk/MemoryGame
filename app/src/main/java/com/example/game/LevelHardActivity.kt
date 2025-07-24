@@ -25,6 +25,7 @@ class LevelHardActivity : AppCompatActivity() {
         startActivity(Intent(this, MainActivity::class.java))
     }
 
+    //конец
     fun end(view: View) {
         startActivity(Intent(this, MenuActivity::class.java))
     }
