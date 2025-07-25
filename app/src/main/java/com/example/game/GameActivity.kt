@@ -11,33 +11,19 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 
-class LevelVeryHardActivity : AppCompatActivity() {
-    // Парные изображения (6 пар)
-    private val cardImages = listOf(
-        R.drawable.axolotl_open_button,
-        R.drawable.axolotl_open_button,
-        R.drawable.crab_open_button,
-        R.drawable.crab_open_button,
-        R.drawable.fish_open_button,
-        R.drawable.fish_open_button,
-        R.drawable.pufferfish_open_button,
-        R.drawable.pufferfish_open_button,
-        R.drawable.jellyfish_open_button,
-        R.drawable.jellyfish_open_button,
-        R.drawable.seahorse_open_button,
-        R.drawable.seahorse_open_button,
-        R.drawable.shell_open_button,
-        R.drawable.shell_open_button,
-        R.drawable.sea_grass_open_button,
-        R.drawable.sea_grass_open_button
-    ).shuffled()
-
+class GameActivity : AppCompatActivity() {
+    private lateinit var cardImages: List<Int>
+    private lateinit var btnsId : List<Int>
     private var startTime: Long = 0
     private var elapsedTime: Long = 0
     private lateinit var timerHandler: Handler
+
+    private var isTimerRunning = false
+
+    private var pauseOffset: Long = 0
+
     private val timerRunnable = object : Runnable {
         override fun run() {
-            val currentTime = SystemClock.elapsedRealtime() - startTime
             timerHandler.postDelayed(this, 1000)
         }
     }
@@ -49,37 +35,27 @@ class LevelVeryHardActivity : AppCompatActivity() {
     private var movesCount = 0
     private lateinit var prefs: SharedPreferences
     private val PREFS_NAME = "GamePrefs"
-    private val BEST_SCORE_KEY = "best_score_very_hard"
+    private lateinit var BEST_SCORE_KEY: String
+    private var TOTAL_PAIRS = 0
 
-    private var isTimerRunning = false
-
-    private var pauseOffset: Long = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_level_very_hard)
+        val bundle = intent.getBundleExtra("data")
+        setContentView(bundle!!.getInt("viewId"))
+
+        BEST_SCORE_KEY = bundle.getString("BEST_SCORE_KEY")!!
+        cardImages = bundle.getIntegerArrayList("cardImages")!!.shuffled()
+        btnsId = bundle.getIntegerArrayList("btnsId")!!
+        TOTAL_PAIRS = btnsId.size / 2
 
         prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE)
         timerHandler = Handler(Looper.getMainLooper())
 
-        val buttons = listOf(
-            findViewById<ImageButton>(R.id.card_1),
-            findViewById<ImageButton>(R.id.card_2),
-            findViewById<ImageButton>(R.id.card_3),
-            findViewById<ImageButton>(R.id.card_4),
-            findViewById<ImageButton>(R.id.card_5),
-            findViewById<ImageButton>(R.id.card_6),
-            findViewById<ImageButton>(R.id.card_7),
-            findViewById<ImageButton>(R.id.card_8),
-            findViewById<ImageButton>(R.id.card_9),
-            findViewById<ImageButton>(R.id.card_10),
-            findViewById<ImageButton>(R.id.card_11),
-            findViewById<ImageButton>(R.id.card_12),
-            findViewById<ImageButton>(R.id.card_13),
-            findViewById<ImageButton>(R.id.card_14),
-            findViewById<ImageButton>(R.id.card_15),
-            findViewById<ImageButton>(R.id.card_16)
-        )
+        val buttons = mutableListOf<ImageButton>()
+        btnsId.forEach {
+            buttons.add(findViewById<ImageButton>(it))
+        }
 
         buttons.forEachIndexed { index, button ->
             button.setImageResource(cardBack)
@@ -93,13 +69,11 @@ class LevelVeryHardActivity : AppCompatActivity() {
         startTimer()
     }
 
-    private val TOTAL_PAIRS = 8 // Добавляем константу
-
     private fun checkForMatch() {
         if (flippedCards[0].tag == flippedCards[1].tag) {
             flippedCards.forEach { it.isEnabled = false }
             matchedPairs++
-            if (matchedPairs == TOTAL_PAIRS) gameCompleted() // Исправлено на TOTAL_PAIRS
+            if (matchedPairs == TOTAL_PAIRS) gameCompleted()
             flippedCards.clear()
             isChecking = false
         } else {
@@ -116,7 +90,7 @@ class LevelVeryHardActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        if (matchedPairs < TOTAL_PAIRS) { // Исправлено на TOTAL_PAIRS
+        if (matchedPairs < TOTAL_PAIRS) {
             startTimer()
         }
     }
@@ -126,7 +100,7 @@ class LevelVeryHardActivity : AppCompatActivity() {
         flippedCards.add(button)
         button.tag = cardImages[index]
 
-        movesCount++ // Увеличиваем счётчик ходов
+        movesCount++
 
         if (flippedCards.size == 2) {
             isChecking = true
@@ -145,6 +119,7 @@ class LevelVeryHardActivity : AppCompatActivity() {
         elapsedTime = SystemClock.elapsedRealtime() - startTime
         isTimerRunning = false
     }
+
     private fun gameCompleted() {
         stopTimer()
         pauseOffset = 0
@@ -161,8 +136,8 @@ class LevelVeryHardActivity : AppCompatActivity() {
             putExtra("MOVES_COUNT", movesCount)
             putExtra("PREVIOUS_SCORE", bestScore)
             putExtra("IS_NEW_RECORD", isNewRecord)
-            putExtra("IS_FIRST_RECORD", isFirstRecord) // Добавляем флаг первого рекорда
-            putExtra("LEVEL_NAME", "Очень Сложно") // Для каждого уровня свое имя
+            putExtra("IS_FIRST_RECORD", isFirstRecord)
+            putExtra("LEVEL_NAME", "Легко")
             putExtra("ELAPSED_TIME", elapsedTime)
         }
         startActivity(intent)
@@ -173,6 +148,7 @@ class LevelVeryHardActivity : AppCompatActivity() {
         super.onPause()
         stopTimer()
     }
+
 
     fun menu(view: View) = startActivity(Intent(this, MainActivity::class.java))
 
@@ -185,7 +161,7 @@ class LevelVeryHardActivity : AppCompatActivity() {
             startTimer()
 
             if (matchedPairs < TOTAL_PAIRS) {
-                listOf(R.id.card_1, R.id.card_2, R.id.card_3, R.id.card_4).forEach { id ->
+                btnsId!!.forEach { id ->
                     findViewById<ImageButton>(id).isClickable = true
                 }
             }
@@ -195,7 +171,7 @@ class LevelVeryHardActivity : AppCompatActivity() {
             stopTimer()
             pauseOffset = elapsedTime
 
-            listOf(R.id.card_1, R.id.card_2, R.id.card_3, R.id.card_4).forEach { id ->
+            btnsId!!.forEach { id ->
                 findViewById<ImageButton>(id).isClickable = false
             }
 

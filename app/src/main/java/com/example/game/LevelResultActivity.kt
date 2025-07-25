@@ -42,10 +42,10 @@ class LevelResultActivity : AppCompatActivity() {
                 bestTime.text = "Новый рекорд: $movesCount ходов"
             }
             isNewRecord -> {
-                bestTime.text = "Новый рекорд! Предыдущий: $previousScore ходов"
+                bestTime.text = "Новый рекорд! Предыдущий: ${if (previousScore != Int.MAX_VALUE) {previousScore} else {"-"}} ходов"
             }
             else -> {
-                bestTime.text = "Ваш результат: $movesCount ходов\nЛучший: $actualBestScore ходов"
+                bestTime.text = "Ваш результат: $movesCount ходов\nЛучший: ${if (actualBestScore != Int.MAX_VALUE) {actualBestScore} else {movesCount}} ходов"
             }
         }
 
