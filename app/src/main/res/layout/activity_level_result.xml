@@ -6,14 +6,14 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_global">
+    android:background="@drawable/backgroundnew">
 
     <pl.droidsonroids.gif.GifImageView
         android:id="@+id/gifImageView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/background_global"
+        android:src="@drawable/backgroundnew"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -43,19 +43,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="30dp"/>
 
-    <TextView
-        android:id="@+id/bestTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Лучший результат: 0 ходов"
-        android:textSize="18sp"
-        android:textColor="#FFFFFF"
-        android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@id/timeSpent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="20dp"/>
-
     <ImageButton
         android:id="@+id/btnMenu"
         android:layout_width="170dp"
@@ -75,10 +62,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Время прохождения: 00:00"
-        android:textSize="18sp"
         android:textColor="#FFFFFF"
-        app:layout_constraintTop_toBottomOf="@id/bestTime"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="20dp"/>
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="158dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

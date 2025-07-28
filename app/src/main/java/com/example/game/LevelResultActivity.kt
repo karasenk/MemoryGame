@@ -32,22 +32,9 @@ class LevelResultActivity : AppCompatActivity() {
 
         val title = findViewById<TextView>(R.id.title)
         val timeSpent = findViewById<TextView>(R.id.timeSpent)
-        val bestTime = findViewById<TextView>(R.id.bestTime)
 
         title.text = "Уровень ${levelName.replace("_", " ")} пройден!"
         timeSpent.text = "Ходов сделано: $movesCount"
-
-        when {
-            isFirstRecord -> {
-                bestTime.text = "Новый рекорд: $movesCount ходов"
-            }
-            isNewRecord -> {
-                bestTime.text = "Новый рекорд! Предыдущий: ${if (previousScore != Int.MAX_VALUE) {previousScore} else {"-"}} ходов"
-            }
-            else -> {
-                bestTime.text = "Ваш результат: $movesCount ходов\nЛучший: ${if (actualBestScore != Int.MAX_VALUE) {actualBestScore} else {movesCount}} ходов"
-            }
-        }
 
         findViewById<TextView>(R.id.elapsedTime).text =
             "Время прохождения: ${formatTime(elapsedTime)}"
